@@ -27,5 +27,6 @@ Prices update every hour. "Avg price" is the average of the cheapest 15% of list
 
 ---
 
-© 2026 mrdonald007. Source available for transparency. All rights reserved.<br>
+© 2026 mrdonald007. All rights reserved.<br>
+Source available for transparency.<br>
 Not affiliated with Blizzard Entertainment.
