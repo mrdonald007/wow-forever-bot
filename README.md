@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" width="128" alt="Auction House">
+  <img src="assets/icon.png" width="100" alt="Auction House">
 </p>
 
 <h1 align="center">Auction House</h1>
