@@ -1,0 +1,20 @@
+name: Register Discord commands
+
+on:
+  workflow_dispatch:
+
+jobs:
+  register:
+    # Only runs in the public repo; the private dev repo never deploys.
+    if: github.repository == 'mrdonald007/wow-forever-bot'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/register-commands.mjs
+        env:
+          DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_GUILD_ID: ${{ secrets.DISCORD_GUILD_ID }}

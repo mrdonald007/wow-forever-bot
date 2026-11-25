@@ -1,0 +1,29 @@
+name: Update auction prices
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: prices
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Only runs in the public repo; the private dev repo never deploys.
+    if: github.repository == 'mrdonald007/wow-forever-bot'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/build-prices.mjs
+        env:
+          BLIZZ_ID: ${{ secrets.BLIZZ_ID }}
+          BLIZZ_SECRET: ${{ secrets.BLIZZ_SECRET }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_KV_ID: ${{ secrets.CF_KV_ID }}

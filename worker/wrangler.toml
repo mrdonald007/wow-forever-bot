@@ -1,0 +1,12 @@
+name = "wow-forever-bot"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# The deploy workflow fills in the real ID from the CF_KV_ID GitHub secret.
+[[kv_namespaces]]
+binding = "KV"
+id = "__KV_ID__"
+
+# Every minute: keep the sticky message at the bottom; every 2nd minute: check the rulesets.
+[triggers]
+crons = ["* * * * *"]
